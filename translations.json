@@ -1,0 +1,349 @@
+{
+  "ar": {
+    "translation": {}
+  },
+  "bg": {
+    "translation": {}
+  },
+  "ca": {
+    "translation": {}
+  },
+  "zh-TW": {
+    "translation": {}
+  },
+  "zh-CN": {
+    "translation": {}
+  },
+  "hr": {
+    "translation": {}
+  },
+  "cs": {
+    "translation": {}
+  },
+  "da": {
+    "translation": {}
+  },
+  "nl": {
+    "translation": {}
+  },
+  "en": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "SEO quickscan Results",
+      "screenshot": "Screenshot",
+      "source": "Source: {{link}}",
+      "requestStatistics": "Request Statistics",
+      "requestStatisticsNarrative": "The page contains <em>{{numberResources}} resources</em> from <em>{{numberHosts}} unique hosts</em> weighing in at <em>{{totalRequestBytes}}</em> in total.",
+      "responseStatistics": "Response Statistics",
+      "responseStatisticsNarrative": "The download size for all resources of the page was <em>{{totalSize}}</em>.",
+      "other": "Other",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Text",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Images",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Other",
+      "numberStaticResources": "Static Contents",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Speed",
+      "usability": "Usability",
+      "thankYou": "Thank you!",
+      "navigationHelp": "Slide Navigation: ⬅️ ➡️",
+      "waterfallDiagram": "Waterfall Diagram",
+      "mobileFriendly": "Mobile-Friendlyness",
+      "easyToUseOnMobile": "This page is easy to use on a mobile device",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Instructions</a>"
+    }
+  },
+  "en-AU": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "How good ya site is",
+      "screenshot": "Check out this fancy pants",
+      "source": "Where’d I get this crap from? {{link}}",
+      "requestStatistics": "Request Statistics",
+      "requestStatisticsNarrative": "The page has <em>{{numberResources}} thingos</em> from <em>{{numberHosts}} places on the interwebs</em>. This means it’s got <em>{{totalRequestBytes}}</em> in total (heaps of shit mate).",
+      "responseStatistics": "What’s the server jabbering on about?",
+      "responseStatisticsNarrative": "Geez Louise. Your whole bloody site is <em>{{totalSize}}</em>.",
+      "other": "Other crap",
+      "htmlResponseBytes": "Weirdo Web code",
+      "textResponseBytes": "Words ’n’ stuff",
+      "cssResponseBytes": "Code for making it look good",
+      "imageResponseBytes": "Pictures",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash (what those games were made in)",
+      "otherResponseBytes": "Other crap",
+      "numberStaticResources": "Shit that stays the same",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "How quick mate?",
+      "usability": "How good can me nan use it?",
+      "thankYou": "Cheers mate",
+      "navigationHelp": "Slide surfin’: ⬅️ ➡️",
+      "waterfallDiagram": "Waterfall Crap",
+      "mobileFriendly": "Mobile-Mateness",
+      "easyToUseOnMobile": "This page is easy peasy to use on a mobile device",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ How to use this crap</a>"
+    }
+  },
+  "en-GB": {
+    "translation": {}
+  },
+  "fil": {
+    "translation": {}
+  },
+  "fi": {
+    "translation": {}
+  },
+  "fr": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "Résultats SEO quickscan",
+      "screenshot": "Capture d’écran",
+      "source": "Source: {{link}}",
+      "requestStatistics": "Statistiques de requête",
+      "requestStatisticsNarrative": "La page contient <em>{{numberResources}} ressources</em> de <em>{{numberHosts}} hôtes uniques</em> pesant à <em>{{totalRequestBytes}}</em> de demande au total.",
+      "responseStatistics": "Statistiques de réponse",
+      "responseStatisticsNarrative": "La taille du téléchargement pour toutes les ressources de la page était de <em>{{totalSize}}</em>.",
+      "other": "Autres",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texte",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Images",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Autres",
+      "numberStaticResources": "Contenu statique",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Vitesse",
+      "usability": "Facilité d’utilisation",
+      "thankYou": "Merci beacoup!",
+      "navigationHelp": "Navigation dans les slides&#8201;: ⬅️ ➡️",
+      "waterfallDiagram": "Diagramme de cascade",
+      "mobileFriendly": "Test d’optimisation mobile",
+      "easyToUseOnMobile": "Cette page est facile à utiliser sur un appareil mobile",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Instructions</a>"
+    }
+  },
+  "de": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "SEO quickscan Ergebnisse",
+      "screenshot": "Screenshot",
+      "source": "Quelle: {{link}}",
+      "requestStatistics": "Request-Statistiken",
+      "requestStatisticsNarrative": "Die Seite enthält <em>{{numberResources}} Ressourcen</em> von <em>{{numberHosts}} eindeutigen Hosts</em>, resultierend in <em>{{totalRequestBytes}} insgesamt</em>.",
+      "responseStatistics": "Response-Statistiken",
+      "responseStatisticsNarrative": "Der insgesamte Download-Umfang der Seite beträgt <em>{{totalSize}}</em>.",
+      "other": "Sonstiges",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Text",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Bilder",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Andere Inhalte",
+      "numberStaticResources": "Statische Inhalte",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Geschwindigkeit",
+      "usability": "Benutzerfreundlichkeit",
+      "thankYou": "Vielen Dank!",
+      "navigationHelp": "Navigation in den Folien: ⬅️ ➡️",
+      "waterfallDiagram": "Wasserfalldiagramm",
+      "mobileFriendly": "Optimierung für Mobilgeräte",
+      "easyToUseOnMobile": "Die Seite ist für Mobilgeräte optimiert",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Hilfe</a>"
+    }
+  },
+  "el": {
+    "translation": {}
+  },
+  "iw": {
+    "translation": {}
+  },
+  "hi": {
+    "translation": {}
+  },
+  "hu": {
+    "translation": {}
+  },
+  "id": {
+    "translation": {}
+  },
+  "it": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "Risultati della SEO quickscan",
+      "screenshot": "Screenshot",
+      "source": "Fonte: {{link}}",
+      "requestStatistics": "Sintesi delle Richieste",
+      "requestStatisticsNarrative": "Il sito contiene <em>{{numberResources}} risorse</em> distribuite su <em>{{numberHosts}} hosts</em>, per una richiesta di <em>{{totalRequestBytes}}</em>.",
+      "responseStatistics": "Sintesi delle Risposte",
+      "responseStatisticsNarrative": "La dimensione totale della pagina é <em>{{totalSize}}</em>.",
+      "other": "Altro",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Testo",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Immagini",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Altro contenuto",
+      "numberStaticResources": "Contenuto statico",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocità",
+      "usability": "Usabilità",
+      "thankYou": "Grazie mille!",
+      "navigationHelp": "Navigazione nelle diapositive: ⬅️ ➡️",
+      "waterfallDiagram": "Diagramma waterfall",
+      "mobileFriendly": "Ottimizzazione mobile",
+      "easyToUseOnMobile": "La pagina è ottimizzata per dispositivi mobili",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Istruzioni</a>"
+    }
+  },
+  "ja": {
+    "translation": {}
+  },
+  "ko": {
+    "translation": {}
+  },
+  "lv": {
+    "translation": {}
+  },
+  "lt": {
+    "translation": {}
+  },
+  "no": {
+    "translation": {}
+  },
+  "pl": {
+    "translation": {}
+  },
+  "pt-BR": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "Resulados SEO quickscan",
+      "screenshot": "Exemplo captura de tela",
+      "source": "Fonte: {{link}}",
+      "requestStatistics": "Estatísticas de petições",
+      "requestStatisticsNarrative": "A página contém <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts</em> únicos com um total de <em>{{totalRequestBytes}}</em> de petições.",
+      "responseStatistics": "Estatísticas de respostas",
+      "responseStatisticsNarrative": "O peso total descarregado de todos os recursos da página é de <em>{{totalSize}}</em>.",
+      "other": "Outras",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texto",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Imagens",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Outros conteúdos",
+      "numberStaticResources": "Conteúdos estáticos",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocidade",
+      "usability": "Usabilidade",
+      "thankYou": "Obrigado!",
+      "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
+      "waterfallDiagram": "Diagramme waterfall",
+      "mobileFriendly": "Compatibilidade com dispositivos móveis",
+      "easyToUseOnMobile": "A página é otimizada para celular",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Istruzioni</a>"
+    }
+  },
+  "pt-PT": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "Resulados SEO quickscan",
+      "screenshot": "Exemplo screenshot",
+      "source": "Fonte: {{link}}",
+      "requestStatistics": "Estatísticas de petições",
+      "requestStatisticsNarrative": "A página contém <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts</em> únicos com um total de <em>{{totalRequestBytes}}</em> de petições.",
+      "responseStatistics": "Estatísticas de respostas",
+      "responseStatisticsNarrative": "O peso total descarregado de todos os recursos da página é de <em>{{totalSize}}</em>.",
+      "other": "Outras",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texto",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Imagens",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Outros conteúdos",
+      "numberStaticResources": "Conteúdos estáticos",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocidade",
+      "usability": "Usabilidade",
+      "thankYou": "Obrigado!",
+      "navigationHelp": "Navegação nos slides: ⬅️ ➡️",
+      "waterfallDiagram": "Diagrama waterfall",
+      "mobileFriendly": "Compatibilidade com dispositivos móveis",
+      "easyToUseOnMobile": "A página é otimizada para celular",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Manual de instruções</a>"
+    }
+  },
+  "ro": {
+    "translation": {}
+  },
+  "ru": {
+    "translation": {}
+  },
+  "sr": {
+    "translation": {}
+  },
+  "sk": {
+    "translation": {}
+  },
+  "sl": {
+    "translation": {}
+  },
+  "es": {
+    "translation": {
+      "appTitle": " SEO quickscan",
+      "presentationTitle": "Resultados SEO quickscan",
+      "screenshot": "Captura de pantalla",
+      "source": "Fuente: {{link}}",
+      "requestStatistics": "Estadísticas de peticiones",
+      "requestStatisticsNarrative": "La página contiene <em>{{numberResources}} recursos</em> de <em>{{numberHosts}} hosts únicos</em> con un total de <em>{{totalRequestBytes}} de peticiones</em>.",
+      "responseStatistics": "Estadísticas de respuestas",
+      "responseStatisticsNarrative": "El peso total descargado de todos los recursos de la página es de <em>{{totalSize}}</em>.",
+      "other": "Otros",
+      "htmlResponseBytes": "HTML",
+      "textResponseBytes": "Texto",
+      "cssResponseBytes": "Cascading Style Sheets",
+      "imageResponseBytes": "Imágenes",
+      "javascriptResponseBytes": "JavaScript",
+      "flashResponseBytes": "Flash",
+      "otherResponseBytes": "Otros contenidos",
+      "numberStaticResources": "Contenidos estáticos",
+      "numberJsResources": "JavaScript",
+      "numberCssResources": "Cascading Style Sheets",
+      "speed": "Velocidad",
+      "usability": "Usabilidad",
+      "thankYou": "¡Muchas gracias!",
+      "navigationHelp": "Navegación en las diapositivas: ⬅️ ➡️",
+      "waterfallDiagram": "Diagrama waterfall",
+      "mobileFriendly": "Optimización para móviles",
+      "easyToUseOnMobile": "La página está optimizada para móviles",
+      "instructions": "<a class='instructions' href='LINK'>ℹ️ Instrucciones</a>"
+    }
+  },
+  "sv": {
+    "translation": {}
+  },
+  "th": {
+    "translation": {}
+  },
+  "tr": {
+    "translation": {}
+  },
+  "uk": {
+    "translation": {}
+  },
+  "vi": {
+    "translation": {}
+  }
+}

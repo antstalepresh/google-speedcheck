@@ -1,0 +1,154 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+    link(rel='icon', type='image/png', href='https://www.google.com/images/icons/product/pagespeed-64.png')
+    title SEO quickscan
+    link(rel='stylesheet', href='https://code.getmdl.io/1.2.1/material.indigo-pink.min.css')
+    style
+      include main.css
+    script(defer, src='https://code.getmdl.io/1.2.1/material.min.js')
+  body
+    h1 #{t('appTitle')}
+    form#form(method='get', action='./slides')
+      div
+        p
+          span.mdl-radio URL to Analyze <small>(including <code>https://</code> or <code>http://</code>)</small>
+        p
+          input#url.mdl-textfield__input(name='url', type='url', required, placeholder='https://www.google.com/')
+      div
+        details
+          summary More options
+          div
+            p
+              label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='strategyMobile')
+                input#strategyMobile.mdl-radio__button(name='strategy', type='radio', value='mobile', checked)
+                span.mdl-radio__label Mobile Site
+            p
+              label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='strategyDesktop')
+                input#strategyDesktop.mdl-radio__button(name='strategy', type='radio', value='desktop')
+                span.mdl-radio__label Desktop Site
+            p#mobileFriendlyParagraph
+              label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='mobileFriendlyTest')
+                input#mobileFriendlyTest.mdl-checkbox__input(name='mobileFriendlyTest', type='checkbox', checked=false, value='true')
+                span.mdl-checkbox__label Run a Mobile-Friendly Test
+          div
+            label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='screenshot')
+              input#screenshot.mdl-checkbox__input(name='screenshot', type='checkbox', checked, value='true')
+              span.mdl-checkbox__label Include a Screenshot
+          div
+            label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for='filterThirdPartyResources')
+              input#filterThirdPartyResources.mdl-checkbox__input(name='filterThirdPartyResources', type='checkbox', checked=false, value='true')
+              span.mdl-checkbox__label Filter 3<sup>rd</sup>-Party Resources&nbsp;
+                small (e.g., most tracking pixels)
+          div
+            select#locale.mdc-select(name='locale')
+              option(value='ar') 🇸🇦 Arabic
+              option(value='bg') 🇧🇬 Bulgarian
+              option(value='ca') 🏳 Catalan
+              option(value='zh-TW') 🇹🇼 Traditional Chinese (Taiwan)
+              option(value='zh-CN') 🇨🇳 Simplified Chinese
+              option(value='hr') 🇭🇷 Croatian
+              option(value='cs') 🇨🇿 Czech
+              option(value='da') 🇩🇰 Danish
+              option(value='nl') 🇳🇱 Dutch
+              option(value='en', selected) 🇺🇸 English
+              option(value='en-AU') 🏄🏽‍♀️ English AU
+              option(value='en-GB') 🇬🇧 English UK
+              option(value='fil') 🇵🇭 Filipino
+              option(value='fi') 🇫🇮 Finnish
+              option(value='fr') 🇫🇷 French
+              option(value='de') 🇩🇪 German
+              option(value='el') 🇬🇷 Greek
+              option(value='iw') 🇮🇱 Hebrew
+              option(value='hi') 🇮🇳 Hindi
+              option(value='hu') 🇭🇺 Hungarian
+              option(value='id') 🇮🇩 Indonesian
+              option(value='it') 🇮🇹 Italian
+              option(value='ja') 🇯🇵 Japanese
+              option(value='ko') 🇰🇷 Korean
+              option(value='lv') 🇱🇻 Latvian
+              option(value='lt') 🇱🇹 Lithuanian
+              option(value='no') 🇳🇴 Norwegian
+              option(value='pl') 🇵🇱 Polish
+              option(value='pt-BR') 🇧🇷 Portuguese (Brazilian)
+              option(value='pt-PT') 🇵🇹 Portuguese (Portugal)
+              option(value='ro') 🇷🇴 Romanian
+              option(value='ru') 🇷🇺 Russian
+              option(value='sr') 🇷🇸 Serbian
+              option(value='sk') 🇸🇰 Slovakian
+              option(value='sl') 🇸🇮 Slovenian
+              option(value='es') 🇪🇸 Spanish
+              option(value='sv') 🇸🇪 Swedish
+              option(value='th') 🇹🇭 Thai
+              option(value='tr') 🇹🇷 Turkish
+              option(value='uk') 🇺🇦 Ukrainian
+              option(value='vi') 🇻🇳 Vietnamese
+      div
+        button#viewButton.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type='submit') 👀&nbsp;&nbsp;View Slides
+        button#downloadButton.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type='submit') 📂&nbsp;&nbsp;Download Slides
+        a#downloadLink.hidden(download, href='')
+    img(src='https://goo.gl/b8G7DH',alt='',height='0',width='0')
+    script.
+      const downloadLink = document.querySelector('#downloadLink');
+      const viewButton = document.querySelector('#viewButton');
+      const downloadButton = document.querySelector('#downloadButton');
+      const urlInput = document.querySelector('#url');
+      const formElement = document.querySelector('#form');
+      const mobileSiteRadio = document.querySelector('#strategyMobile');
+      const desktopSiteRadio = document.querySelector('#strategyDesktop');
+      const mobileFriendlyParagraph = document.querySelector('#mobileFriendlyParagraph');
+
+      const strategyChanged = () => {
+        if (mobileSiteRadio.checked) {
+          mobileFriendlyParagraph.style.visibility = 'visible';
+        } else {
+          mobileFriendlyParagraph.style.visibility = 'hidden';
+        }
+      };
+      mobileSiteRadio.addEventListener('change', strategyChanged);
+      desktopSiteRadio.addEventListener('change', strategyChanged);
+      strategyChanged();
+
+      viewButton.addEventListener('click', () => {
+        if (!formElement.checkValidity()) {
+          return;
+        }
+        viewButton.innerHTML = '<span class="loading">⏳</span>&nbsp;&nbsp;Preparing Slides…';
+        formElement.submit();
+      });
+
+      downloadButton.addEventListener('click', clickEvent => {
+        if (!formElement.checkValidity()) {
+          return;
+        }
+        clickEvent.preventDefault();
+        let queryString = [];
+        for (const formField of formElement.querySelectorAll('input,select')) {
+          if (formField.nodeName === 'INPUT') {
+            if (formField.type === 'checkbox' || formField.type === 'radio') {
+              if (formField.checked) {
+                queryString.push(`${formField.name}=${encodeURIComponent(formField.value)}`);
+              }
+            } else {
+              queryString.push(`${formField.name}=${encodeURIComponent(formField.value)}`);
+            }
+          } else if (formField.nodeName === 'SELECT') {
+            queryString.push(`${formField.name}=${encodeURIComponent(formField.value)}`);
+          }
+        }
+        queryString = queryString.join('&');
+        downloadLink.href = `${formElement.action}?${queryString}`;
+        const url = new URL(urlInput.value);
+        downloadLink.download = `pagespeed_inslides_-_${
+            url.hostname.replace(/\./g, '_')}${
+            url.pathname.length > 1 ? url.pathname.replace(/[\/\.]/g, '-') : ''
+            }.html`;
+        const defaultText = downloadButton.textContent;
+        downloadButton.innerHTML = '<span class="loading">⏳</span>&nbsp;&nbsp;Preparing Slides…';
+        setTimeout(() => {
+          downloadButton.textContent = defaultText;
+        }, 30000);
+        downloadLink.click();
+      });

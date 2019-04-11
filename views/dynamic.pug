@@ -1,0 +1,272 @@
+extends slides
+
+block variables
+  - const favicon = 'https://www.google.com/images/icons/product/pagespeed-64.png';
+  - const title = `${t('presentationTitle').replace(/"/g, '&quot;')}`;
+  - const subtitle = `<img src='http://www.google.com/s2/favicons?domain_url=${encodeURIComponent(insights.finalUrl)}'> ${insights.title.replace(/"/g, '&quot;')}`;
+  - const date = new Intl.DateTimeFormat(language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date());
+  - const navigationHelp = `${t('navigationHelp').replace(/"/g, '&quot;')} — ${t('instructions').replace('LINK', 'https://drive.google.com/corp/drive/folders/0B-mZyN2zQedaYjNLOG5kWWw4ZDA')}`;
+block slides
+  style
+    include style.css
+    include ../third_party/prism-coy.css
+
+  slide.title-slide.segue.fill.nobackground
+    div.logo
+      img(src='data:image/png;base64,' + encoded[__dirname + '/public/images/logo.png'])
+    aside.gdbar
+      img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
+    hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+      h1.white SEO Quickscan Rapport voor
+      h2.white(data-config-subtitle='')
+      p
+        img.user-profile-image
+        span.user-display-name
+  script(src='https://micmro.github.io/PerfCascade/src/perf-cascade.min.js')
+  script(src='https://www.gstatic.com/charts/loader.js')
+  - const link = `<a href='${insights.finalUrl}'>${URL.parse(insights.finalUrl).hostname}</a>`;
+  if insights.screenshot
+    slide
+      div.logo1
+        img(src='data:image/png;base64,' + encoded[__dirname + '/public/images/logo.png'])
+      hgroup
+        h2.alignCenter #{t('screenshot')}
+      article.flexbox.vcenter.screenshot(style='background-image: url(data:' + insights.screenshot.mimeType + ';base64,' + insights.screenshot.data + '); background-repeat: no-repeat; background-size: contain; background-position: center;')
+      footer.source.black !{t('source', {link: link, interpolation: {escapeValue: false}})}
+  if insights.mobileFriendly && insights.mobileFriendly.testStatus.status === 'COMPLETE' && insights.mobileFriendly.mobileFriendliness === 'MOBILE_FRIENDLY'
+    slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')
+      aside.gdbar
+        img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
+      hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+        h1 #{t('mobileFriendly')}
+        h2 #{t('easyToUseOnMobile')}
+  slide
+    div.logo1
+      img(src='data:image/png;base64,' + encoded[__dirname + '/public/images/logo.png'])
+    hgroup
+      h2.alignCenter #{t('SEO Score')}
+    article.scoreArticle
+      #scorePieChart
+      #scoreDesc
+        .finalUrl= insights.finalUrl
+        .description 
+          span De 
+          span.highlight snelheidsscore 
+          span is gebaseerd op labgegevens die zijn geanalyseerd door 
+          span.highlight Lighthouse
+          span.
+        .currentTimeContainer Tijd van analyse:&nbsp;&nbsp;
+          span#currentTime
+        .scale Scale:
+          .scaleValue
+            .goodScaleDesc 
+            span 90-100 (snel)
+          .scaleValue
+            .mediumScaleDesc 
+            span 50-89 (gemiddeld)
+          .scaleValue
+            .badScaleDesc 
+            span 0-49 (lanzaam)
+    
+    script(src='https://d3js.org/d3.v5.min.js')
+
+    script.
+      const pageScores = !{JSON.stringify(insights.scores)};
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth() + 1;
+      var date = now.getDate();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      document.getElementById("currentTime").innerHTML = `${month}-${date}-${year} ${hours}:${minutes}:${seconds}`;
+
+      var vis = d3.select("#scorePieChart")
+            .append("svg");
+      var totalarc = d3.arc()
+          .innerRadius(60)
+          .outerRadius(70)
+          .startAngle(0)
+          .endAngle(Math.PI * 2)
+
+      vis.append("path")
+          .attr("d", totalarc)
+          .attr("fill", "#E8E8E8")
+          .attr("transform", "translate(75,75)")
+
+      var arc = d3.arc()
+          .innerRadius(60)
+          .outerRadius(70)
+          .cornerRadius(5)
+          .startAngle(0)
+          .endAngle(Math.PI * 2 * pageScores.speed / 100 )
+      
+      var activeColor = "#CD1A24";
+      if (pageScores.speed >=  90)
+        activeColor = "#12823E";
+      else if (pageScores.speed >= 50)
+        activeColor = "#EC7721"
+
+      vis.append("path")
+          .attr("d", arc)
+          .attr("fill", activeColor)
+          .attr("transform", "translate(75,75)");
+      
+      vis.append("text")
+        .attr("x", 75)
+        .attr("y", 90)
+        .style("font-size", "45px")
+        .style("fill", activeColor)
+        .style("font-weight", "bold")
+        .attr("text-anchor", "middle")
+        .text(pageScores.speed);
+
+      let barCharts = {};
+      function prepareBarChart(rules, currentRule, groupName) {
+        if (!barCharts[groupName]) {
+          barCharts[groupName] = [];
+        }
+        let dataTable = [['', '', {role: 'style'}]];
+        rules.forEach(rule => {
+          dataTable.push([rule.ruleName.split(/\s/).slice(0, 5).join(' '), rule.ruleImpact, rule.ruleName === currentRule ? '#2a7cdf' : '#ccc']);
+        });
+        barCharts[groupName].push({
+          dataTable: dataTable,
+          currentRule: currentRule
+        });
+      }
+
+  if insights.waterfall
+    slide
+      div.logo1
+        img(src='data:image/png;base64,' + encoded[__dirname + '/public/images/logo.png'])
+      hgroup
+        h2.alignCenter #{t('waterfallDiagram')}
+      article
+        style !{insights.waterfall.css}
+        style.
+          .resource-legend li:before {
+            position: initial;
+          }
+          .resource-legend {
+            margin-bottom: 2em;
+          }
+        div#output !{insights.waterfall.svg}
+
+  each group, groupName in insights.orderedRules
+    if group.length > 0
+      //- slide.title-slide.segue.fill.nobackground(style='background-image: url(data:;base64,' + encoded[Object.keys(encoded)[(Math.floor(Math.random() * 11))]] + ')')
+      //-   aside.gdbar
+      //-     img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
+      //-   hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+      //-     h1.white #{t(groupName)} (#{insights.scores[groupName]}/100)
+      each rule in group
+        slide
+          .rule-importance(id=rule.localizedRuleName)
+          script.
+            var groupName = !{JSON.stringify(groupName)};
+            var orderedRules = !{JSON.stringify(insights.orderedRules)};
+            orderedRules = orderedRules[groupName];
+            prepareBarChart(orderedRules.map(rule => {
+              return {
+                ruleName: rule.localizedRuleName,
+                ruleImpact: rule.ruleImpact
+              };
+            }),
+            !{JSON.stringify(rule.localizedRuleName)},
+            !{JSON.stringify(groupName)});
+          
+          div.logo1
+            img(src='data:image/png;base64,' + encoded[__dirname + '/public/images/logo.png'])
+          hgroup
+            h2.alignCenter.margin150 #{rule.localizedRuleName}
+          article
+            if rule.html
+              p !{rule.html}
+            if rule.urlBlocks.length > 0
+              each urlBlock in rule.urlBlocks
+                div
+                  p !{urlBlock.html}
+                  if urlBlock.urls.length > 0
+                    ul
+                      each urlHtml, index in urlBlock.urls
+                        - const match = urlHtml.html.match(/>(.*?)<\/a>/);
+                        - const url = match ? match[1] : '';
+                        - const contentType = url && insights.resourceTypes[url] ? insights.resourceTypes[url].type : '';
+                        - const contentLength = url && insights.resourceTypes[url] ? `&ensp;<small class="file-size">(${filesize(insights.resourceTypes[url].size).replace(/\s/g, ' ')})</small>` : '';
+                        - urlHtml.html = urlHtml.html.replace(/title=/, 'data-content-type="' + contentType + '" title=');
+                        - if (contentLength) {
+                        -   urlHtml.html = urlHtml.html.replace(/<\/a>/, `</a>${contentLength}`);
+                        - }
+                        - let codeId = '';
+                        - if (/(?:text\/css|javascript|text\/html)/.test(contentType)) {
+                        -   let lang;
+                        -   codeId = 'code-' + Math.random().toString().substr(2);
+                        -   if (/javascript/.test(contentType)) {
+                        -     lang = 'javascript';
+                        -   } else if (/text\/html/.test(contentType)) {
+                        -     lang = 'html';
+                        -   } else if (/text\/css/.test(contentType)) {
+                        -     lang = 'css';
+                        -   }
+                        -   const code = insights.resourceTypes[url].beautified;
+                        -   urlHtml.html += '<template id="' + codeId + '">' + code + '</template>';
+                        - }
+                        if /(?:text\/css|javascript|text\/html)/.test(contentType)
+                          li(data-code-id=codeId, onmouseover="addCodePreview(this);")
+                            details
+                              summary !{urlHtml.html}
+                              div
+                        else if /(?:font)/.test(contentType)
+                          li
+                            - const randomId = 'font-' + Math.random().toString().substr(2);
+                            style.
+                              @font-face {
+                                font-family: #{randomId};
+                                src: url("#{url}");
+                              }
+                            details
+                              summary !{urlHtml.html}
+                              div.font-preview(style='font-family:' + randomId) The quick brown fox jumps over the lazy dog.
+                        else if /(?:image\/)/.test(contentType)
+                          li
+                            details
+                              summary !{urlHtml.html}
+                              img.image-preview(src=url)
+                        else
+                          li !{urlHtml.html}
+  slide.title-slide.segue.fill.nobackground
+    div.logo
+      img(src='data:image/png;base64,' + encoded[__dirname + '/public/images/logo.png'])
+    aside.gdbar
+      img(src='data:image/svg+xml;base64,' + encoded[__dirname + '/public/images/google.svg'])
+    hgroup(style='background:black; opacity:0.75; width:100%; padding:.5em 1em;')
+      h1.white #{t('thankYou')}
+      p
+        img.user-profile-image
+        span.user-display-name
+  slide.backdrop
+  script.
+    // Current user JSONP callback
+    function _showCurrentUser(currentUser) {
+      if (currentUser.status !== 'Success') {
+        for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
+          userDisplayName.innerHTML = `#{date} — !{navigationHelp}`;
+        }
+        return;
+      }
+      const email = currentUser.message.replace(/.*?id (\w+@google.com).*?/g, '$1');
+      const profile = currentUser.user_profile;
+      const displayName = profile.displayName;
+      const profileImage = profile.image.url;
+      for (const userDisplayName of document.querySelectorAll('.user-display-name')) {
+        userDisplayName.textContent = `${displayName} (${email}) — #{date}`;
+        userDisplayName.innerHTML += ` — !{navigationHelp}`;
+      }
+      for (const userProfileImage of document.querySelectorAll('.user-profile-image')) {
+        userProfileImage.src = profileImage;
+      }
+    }
+  script(src='https://script.google.com/a/macros/google.com/s/AKfycbykI7lRcoqqpca9ODU9B31d5W3Xyxll-Z-gM2x_l3JntrcoTKg/exec?callback=_showCurrentUser')
+  img(src='https://goo.gl/b8G7DH',alt='',height='0',width='0')
