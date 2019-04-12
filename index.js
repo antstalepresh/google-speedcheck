@@ -74,7 +74,7 @@ base64.encodeAssets()
   app.get('/screenshot', routes.getScreenshot);
 
   // Start server
-  const server = app.listen(process.env.PORT || 2000, function() {
+  const server = app.listen(process.env.PORT || 3000, function() {
     const host = server.address().address;
     const port = server.address().port;
     console.log('SEO quickscan running at http://%s:%s', host, port);
